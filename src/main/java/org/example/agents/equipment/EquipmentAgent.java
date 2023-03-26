@@ -10,6 +10,6 @@ public class EquipmentAgent extends Agent {
     @Override
     protected void setup() {
         AController.addNewAgent(this, name);
-        System.out.println("equipment agent added");
+        System.out.println("Equipment agent " + getAID().getName() + "created");
     }
 }

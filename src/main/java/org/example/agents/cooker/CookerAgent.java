@@ -10,6 +10,6 @@ public class CookerAgent extends Agent {
     @Override
     protected void setup() {
         AController.addNewAgent(this, name);
-        System.out.println("cooker agent added");
+        System.out.println("Cooker agent " + getAID().getName() + "created");
     }
 }

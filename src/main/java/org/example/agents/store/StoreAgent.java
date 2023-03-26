@@ -11,7 +11,6 @@ public class StoreAgent extends Agent {
     @Override
     protected void setup() {
         AController.addNewAgent(this, name);
-        System.out.println("store agent added");
-        System.out.println(TJSONSerializer.getString("src/main/java/org/example/resources/product_types.txt"));
+        System.out.println("Store agent " + getAID().getName() + "created");
     }
 }

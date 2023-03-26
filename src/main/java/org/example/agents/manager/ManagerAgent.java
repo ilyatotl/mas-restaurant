@@ -15,7 +15,7 @@ import org.example.agents.visitor.VisitorAgent;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ManagerAgent extends Agent {
+public class ManagerAgent extends jade.core.Agent {
     private final String pathToProductTypes = "src/main/java/org/example/resources/product_types.txt";
     private final String pathToProducts = "src/main/java/org/example/resources/products.txt";
     private final String pathToVisitorOrders = "src/main/java/org/example/resources/visitor_orders.txt";
@@ -31,8 +31,8 @@ public class ManagerAgent extends Agent {
 
     @Override
     public void setup() {
+        System.out.println("Manager agent " + getAID().getName() + "created");
         AController.addNewAgent(this, name);
-        System.out.println("Manager agent " + aid.getName() + "created");
 
         createStore();
         createVisitors();
