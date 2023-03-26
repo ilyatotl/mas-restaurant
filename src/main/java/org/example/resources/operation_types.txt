@@ -1,0 +1,11 @@
+{
+            "operation_types": [{
+                                    "oper_type_id": 1,
+                                    "oper_type_name": "frying"
+                        },
+                        {
+                                    "oper_type_id": 17,
+                                    "oper_type_name": "pouring boiled water into a paper cup"
+                        }
+            ]
+}
