@@ -1,0 +1,32 @@
+{
+            "process_log": [{
+                        "proc_id": 434,
+                        "ord_dish": 625,
+                        "proc_started": "2023-02-28T10:12:36",
+                        "proc_ended": "2023-02-28T10:12:50",
+                        "proc_active": false,
+                        "proc_operations": [{
+                                    "proc_oper": 82325
+                        }]
+            },
+ {
+                        "proc_id": 435,
+                        "ord_dish": 626,
+                        "proc_started": "2023-02-28T10:12:51",
+                        "proc_ended": "2023-02-28T10:13:05",
+                        "proc_active": false,
+                        "proc_operations": [{
+                                    "proc_oper": 82326
+                        }]
+            },
+ {
+                        "proc_id": 436,
+                        "ord_dish": 627,
+                        "proc_started": "2023-02-28T11:12:36",
+                        "proc_ended": "2023-02-28T11:12:50",
+                        "proc_active": false,
+                        "proc_operations": [{
+                                    "proc_oper": 82326
+                        }]
+            }]
+}

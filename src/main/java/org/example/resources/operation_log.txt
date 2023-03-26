@@ -1,0 +1,32 @@
+{
+"operation_log": [{
+                        "oper_id": 82325,
+                        "oper_proc": 434,
+                        "oper_card": 518,
+                        "oper_started": "2023-02-28T10:12:37",
+                        "oper_ended": "2023-02-28T10:12:49",
+                       "oper_equip_id": 14,
+                        "oper_coocker_id": 15,
+                        "oper_active": false
+            },
+ {
+                        "oper_id": 82326,
+                        "oper_proc": 435,
+                        "oper_card": 518,
+                        "oper_started": "2023-02-28T10:12:51",
+                        "oper_ended": "2023-02-28T10:13:04",
+                        "oper_equip_id": 14,
+                        "oper_coocker_id": 15,
+                        "oper_active": false
+            },
+ {
+                        "oper_id": 82327,
+                        "oper_proc": 436,
+                        "oper_card": 518,
+                        "oper_started": "2023-02-28T11:12:37",
+                        "oper_ended": "2023-02-28T11:12:49",
+                        "oper_equip_id": 14,
+                        "oper_coocker_id": 16,
+                        "oper_active": false
+            }]
+}
