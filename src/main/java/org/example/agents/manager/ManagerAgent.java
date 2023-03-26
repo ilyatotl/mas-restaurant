@@ -10,6 +10,7 @@ import org.example.JSONSerializer.TJSONSerializer;
 import org.example.agents.cooker.CookerAgent;
 import org.example.agents.equipment.EquipmentAgent;
 import org.example.agents.store.StoreAgent;
+import org.example.agents.visitor.OrderCreator;
 import org.example.agents.visitor.VisitorAgent;
 
 import java.util.HashMap;
@@ -23,7 +24,7 @@ public class ManagerAgent extends jade.core.Agent {
     private final String pathToEquipment = "src/main/java/org/example/resources/equipment.txt";
 
     private final String name = "manager";
-    private final AID aid = getAID();
+    public static AID aid;
 
     Map<String, String> visitors = new HashMap<>();
     Map<String, String> cookers = new HashMap<>();
@@ -31,13 +32,17 @@ public class ManagerAgent extends jade.core.Agent {
 
     @Override
     public void setup() {
-        System.out.println("Manager agent " + getAID().getName() + "created");
+        aid = getAID();
+        System.out.println("Manager agent " + getAID().getName() + " created");
         AController.addNewAgent(this, name);
 
         createStore();
         createVisitors();
         createCookers();
         createEquipment();
+
+        addBehaviour(new MenuDispenser());
+        addBehaviour(new ManagerOrderCreator());
     }
 
     private void createStore() {
@@ -51,7 +56,7 @@ public class ManagerAgent extends jade.core.Agent {
     private void createVisitors() {
         JsonArray visitorsOrders = TJSONSerializer.getJson(pathToVisitorOrders).getAsJsonArray("visitors_orders");
         for (JsonElement jsonElement : visitorsOrders) {
-            String visitorName = ((JsonObject)jsonElement).get("vis_name").getAsString();
+            String visitorName = ((JsonObject) jsonElement).get("vis_name").getAsString();
             visitors.put(visitorName, AController.addAgent(VisitorAgent.class, visitorName, new Object[]{jsonElement}));
         }
     }
@@ -59,7 +64,7 @@ public class ManagerAgent extends jade.core.Agent {
     private void createCookers() {
         JsonArray cooker = TJSONSerializer.getJson(pathToCookers).getAsJsonArray("cookers");
         for (JsonElement jsonElement : cooker) {
-            String cookerName = ((JsonObject)jsonElement).get("cook_name").getAsString();
+            String cookerName = ((JsonObject) jsonElement).get("cook_name").getAsString();
             cookers.put(cookerName, AController.addAgent(CookerAgent.class, cookerName, new Object[]{jsonElement}));
         }
     }
@@ -67,7 +72,7 @@ public class ManagerAgent extends jade.core.Agent {
     private void createEquipment() {
         JsonArray equipments = TJSONSerializer.getJson(pathToEquipment).getAsJsonArray("equipment");
         for (JsonElement jsonElement : equipments) {
-            String equipmentName = ((JsonObject)jsonElement).get("equip_name").getAsString();
+            String equipmentName = ((JsonObject) jsonElement).get("equip_name").getAsString();
             equipment.put(equipmentName, AController.addAgent(EquipmentAgent.class, equipmentName, new Object[]{jsonElement}));
         }
     }

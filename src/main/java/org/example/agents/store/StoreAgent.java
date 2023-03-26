@@ -7,10 +7,11 @@ import org.example.JSONSerializer.TJSONSerializer;
 
 public class StoreAgent extends Agent {
     private final String name = "store";
-    private final AID aid = getAID();
+    public static AID aid;
     @Override
     protected void setup() {
+        aid = getAID();
         AController.addNewAgent(this, name);
-        System.out.println("Store agent " + getAID().getName() + "created");
+        System.out.println("Store agent " + getAID().getName() + " created");
     }
 }
