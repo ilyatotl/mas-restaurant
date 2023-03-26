@@ -10,6 +10,6 @@ public class ProductAgent extends Agent {
     @Override
     protected void setup() {
         AController.addNewAgent(this, name);
-        System.out.println("product agent added");
+        System.out.println("Product agent " + getAID().getName() + " created");
     }
 }

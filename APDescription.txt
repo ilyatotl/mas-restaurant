@@ -1,0 +1,1 @@
+( ap-description  :name "172.17.0.1:8081/JADE" :ap-services (set ( ap-service  :name fipa.mts.mtp.http.std :type fipa.mts.mtp.http.std :addresses (sequence http://ilya-VivoBook-ASUSLaptop-X512JF-A512JF:7778/acc))))

@@ -31,4 +31,8 @@ public class TJSONSerializer {
     public static JsonObject getJson(final String filename) {
         return (JsonObject) new JsonParser().parse(getString(filename));
     }
+
+    public static JsonObject getJsonFromString(String data) {
+        return (JsonObject) new JsonParser().parse(data);
+    }
 }
