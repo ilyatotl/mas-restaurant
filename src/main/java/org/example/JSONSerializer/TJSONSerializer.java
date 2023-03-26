@@ -1,7 +1,10 @@
 package org.example.JSONSerializer;
 
+import netscape.javascript.JSObject;
+
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 import com.google.gson.JsonParser;
@@ -19,8 +22,8 @@ public class TJSONSerializer {
                 temp = scanner.nextLine();
                 ans += temp;
             }
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+        } catch (FileNotFoundException fe) {
+            fe.printStackTrace();
         }
         return ans;
     }
