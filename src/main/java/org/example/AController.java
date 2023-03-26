@@ -10,6 +10,7 @@ import jade.domain.FIPAException;
 import jade.wrapper.AgentController;
 import jade.wrapper.ContainerController;
 import jade.wrapper.StaleProxyException;
+import org.example.agents.manager.ManagerAgent;
 import org.example.agents.store.StoreAgent;
 
 import java.text.MessageFormat;
@@ -29,7 +30,7 @@ public class AController {
     }
 
     void start() {
-        addAgent(StoreAgent.class, "", null);
+        addAgent(ManagerAgent.class, "", null);
     }
 
     public static String addAgent(Class<?> clazz, String suffix, Object[] args) {
