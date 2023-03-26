@@ -13,5 +13,7 @@ public class OperationAgent extends Agent {
         aid = getAID();
         System.out.println("Operation " + getAID().getName() + " created");
         AController.addNewAgent(this, name);
+
+        addBehaviour(new SenderForCooking(getArguments()[0]));
     }
 }

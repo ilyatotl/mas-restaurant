@@ -1,12 +1,10 @@
 package org.example.JSONSerializer;
 
-import netscape.javascript.JSObject;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Scanner;
+
 import com.google.gson.JsonParser;
 import com.google.gson.JsonObject;
 

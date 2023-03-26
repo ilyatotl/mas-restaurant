@@ -6,11 +6,14 @@ import org.example.AController;
 
 public class CookerAgent extends Agent {
     private final String name = "cooker";
-    public static AID aid ;
+    public static AID aid;
+
     @Override
     protected void setup() {
         aid = getAID();
         AController.addNewAgent(this, name);
         System.out.println("Cooker agent " + getAID().getName() + " created");
+
+        addBehaviour(new CookProducer(getArguments()));
     }
 }

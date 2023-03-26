@@ -7,6 +7,7 @@ import org.example.AController;
 public class EquipmentAgent extends Agent {
     private final String name = "equipment";
     public static AID aid;
+
     @Override
     protected void setup() {
         aid = getAID();
