@@ -1,21 +1,23 @@
 package org.example;
 
+import jade.core.Runtime;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.domain.FIPAException;
+import jade.wrapper.AgentController;
 import jade.wrapper.ContainerController;
 import jade.wrapper.StaleProxyException;
 import org.example.agents.store.StoreAgent;
 
 import java.text.MessageFormat;
 
-public class AgentController {
+public class AController {
     private static ContainerController containerController;
 
-    public AgentController() {
+    public AController() {
         final Runtime rt = Runtime.instance();
         final Profile p = new ProfileImpl();
 
@@ -42,7 +44,7 @@ public class AgentController {
         }
         return "";
     }
-    public static void adNewAgent(jade.core.Agent agent, String type) {
+    public static void addNewAgent(jade.core.Agent agent, String type) {
         DFAgentDescription dfAgentDescription = new DFAgentDescription();
         dfAgentDescription.setName(agent.getAID());
 
