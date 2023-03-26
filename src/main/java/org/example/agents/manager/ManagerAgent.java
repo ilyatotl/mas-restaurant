@@ -4,16 +4,16 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import jade.core.AID;
-import jade.core.Agent;
 import org.example.AController;
 import org.example.JSONSerializer.TJSONSerializer;
 import org.example.agents.cooker.CookerAgent;
 import org.example.agents.equipment.EquipmentAgent;
 import org.example.agents.store.StoreAgent;
-import org.example.agents.visitor.OrderCreator;
 import org.example.agents.visitor.VisitorAgent;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ManagerAgent extends jade.core.Agent {
@@ -27,7 +27,7 @@ public class ManagerAgent extends jade.core.Agent {
     public static AID aid;
 
     Map<String, String> visitors = new HashMap<>();
-    Map<String, String> cookers = new HashMap<>();
+    List<AID> cookers = new ArrayList<>();
     Map<String, String> equipment = new HashMap<>();
 
     @Override
@@ -43,6 +43,7 @@ public class ManagerAgent extends jade.core.Agent {
 
         addBehaviour(new MenuDispenser());
         addBehaviour(new ManagerOrderCreator());
+        addBehaviour(new OperationManager(cookers));
     }
 
     private void createStore() {
@@ -64,8 +65,10 @@ public class ManagerAgent extends jade.core.Agent {
     private void createCookers() {
         JsonArray cooker = TJSONSerializer.getJson(pathToCookers).getAsJsonArray("cookers");
         for (JsonElement jsonElement : cooker) {
-            String cookerName = ((JsonObject) jsonElement).get("cook_name").getAsString();
-            cookers.put(cookerName, AController.addAgent(CookerAgent.class, cookerName, new Object[]{jsonElement}));
+            String cookerName = jsonElement.getAsJsonObject().get("cook_name").getAsString();
+            String cookerId = jsonElement.getAsJsonObject().get("cook_id").getAsString();
+
+            cookers.add(new AID(AController.addAgent(CookerAgent.class, cookerName, new Object[]{cookerName, cookerId})));
         }
     }
 

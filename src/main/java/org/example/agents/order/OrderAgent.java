@@ -12,7 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class OrderAgent extends Agent {
-    private final Map<String, AID> processes = new HashMap<>();
+    private final String pathToCookers = "src/main/java/org/example/resources/cookers.txt";
+    private final Map<String, String> processes = new HashMap<>();
     private final String name = "order";
     public static AID aid;
 
@@ -23,6 +24,8 @@ public class OrderAgent extends Agent {
         AController.addNewAgent(this, name);
 
         createDishes();
+
+        addBehaviour(new ProductsChecker(getArguments()[0].toString()));
     }
 
     private void createDishes() {
@@ -34,7 +37,7 @@ public class OrderAgent extends Agent {
 
             System.out.println("Dish " + menuId + " was added with id " + dishId);
 
-            processes.put(dishId, new AID(AController.addAgent(OperationAgent.class, dishId, new Object[]{dish})));
+            processes.put(dishId, AController.addAgent(OperationAgent.class, dishId, new Object[]{dish}));
         }
     }
 }
