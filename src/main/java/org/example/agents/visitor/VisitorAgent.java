@@ -1,11 +1,10 @@
-package org.example.agents;
+package org.example.agents.visitor;
 
 import jade.core.AID;
 import jade.core.Agent;
 import org.example.AController;
-import org.example.JSONSerializer.TJSONSerializer;
 
-public class Visitor extends Agent {
+public class VisitorAgent extends Agent {
     private final String name = "visitor";
     private final AID aid = getAID();
     @Override

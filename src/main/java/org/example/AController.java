@@ -10,7 +10,7 @@ import jade.domain.FIPAException;
 import jade.wrapper.AgentController;
 import jade.wrapper.ContainerController;
 import jade.wrapper.StaleProxyException;
-import org.example.agents.StoreAgent;
+import org.example.agents.store.StoreAgent;
 
 import java.text.MessageFormat;
 
