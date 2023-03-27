@@ -51,15 +51,15 @@ public class AController {
         addAgent(ManagerAgent.class, "", null);
     }
 
-    public static String addAgent(Class<?> clazz, String suffix, Object[] args) {
+    public static String addAgent(Class<?> classs, String suffix, Object[] args) {
         try {
             AgentController agent =
                     containerController.createNewAgent(
-                            MessageFormat.format("{0}{1}", clazz.getSimpleName(), suffix), clazz.getName(), args);
+                            MessageFormat.format("{0}{1}", classs.getSimpleName(), suffix), classs.getName(), args);
             agent.start();
             return agent.getName();
         } catch (StaleProxyException ex) {
-            ex.printStackTrace(); // I prefer ff
+            ex.printStackTrace();
         }
         return "";
     }
