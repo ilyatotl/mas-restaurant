@@ -19,7 +19,7 @@ public class StoreAgent extends Agent {
     @Override
     protected void setup() {
         aid = getAID();
-        System.out.println("Product agent " + getAID().getName() + " created");
+        System.out.println("Store agent created");
         AController.addNewAgent(this, name);
 
         getProducts();

@@ -27,13 +27,15 @@ public class ManagerAgent extends jade.core.Agent {
     public static AID aid;
 
     Map<String, String> visitors = new HashMap<>();
-    List<AID> cookers = new ArrayList<>();
     Map<String, String> equipment = new HashMap<>();
+
+    List<AID> cookers = new ArrayList<>();
+    List<String> cookersNames = new ArrayList<>();
 
     @Override
     public void setup() {
         aid = getAID();
-        System.out.println("Manager agent " + getAID().getName() + " created");
+        System.out.println("Manager agent created");
         AController.addNewAgent(this, name);
 
         createStore();
@@ -43,7 +45,7 @@ public class ManagerAgent extends jade.core.Agent {
 
         addBehaviour(new MenuDispenser());
         addBehaviour(new ManagerOrderCreator());
-        addBehaviour(new OperationManager(cookers));
+        addBehaviour(new OperationManager(cookers, cookersNames));
     }
 
     private void createStore() {
@@ -57,8 +59,8 @@ public class ManagerAgent extends jade.core.Agent {
     private void createVisitors() {
         JsonArray visitorsOrders = TJSONSerializer.getJson(pathToVisitorOrders).getAsJsonArray("visitors_orders");
         for (JsonElement jsonElement : visitorsOrders) {
-            String visitorName = ((JsonObject) jsonElement).get("vis_name").getAsString();
-            visitors.put(visitorName, AController.addAgent(VisitorAgent.class, visitorName, new Object[]{jsonElement}));
+            String visitorName = jsonElement.getAsJsonObject().get("vis_name").getAsString();
+            visitors.put(visitorName, AController.addAgent(VisitorAgent.class, visitorName, new Object[]{jsonElement, visitorName}));
         }
     }
 
@@ -69,13 +71,14 @@ public class ManagerAgent extends jade.core.Agent {
             String cookerId = jsonElement.getAsJsonObject().get("cook_id").getAsString();
 
             cookers.add(new AID(AController.addAgent(CookerAgent.class, cookerName, new Object[]{cookerName, cookerId})));
+            cookersNames.add(cookerName);
         }
     }
 
     private void createEquipment() {
         JsonArray equipments = TJSONSerializer.getJson(pathToEquipment).getAsJsonArray("equipment");
         for (JsonElement jsonElement : equipments) {
-            String equipmentName = ((JsonObject) jsonElement).get("equip_name").getAsString();
+            String equipmentName = jsonElement.getAsJsonObject().get("equip_name").getAsString();
             equipment.put(equipmentName, AController.addAgent(EquipmentAgent.class, equipmentName, new Object[]{jsonElement}));
         }
     }

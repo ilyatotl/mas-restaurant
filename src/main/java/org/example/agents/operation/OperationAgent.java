@@ -11,7 +11,7 @@ public class OperationAgent extends Agent {
     @Override
     protected void setup() {
         aid = getAID();
-        System.out.println("Operation " + getAID().getName() + " created");
+        System.out.println("Operation agent for dish  " + getArguments()[1].toString() + " created");
         AController.addNewAgent(this, name);
 
         addBehaviour(new SenderForCooking(getArguments()[0]));
