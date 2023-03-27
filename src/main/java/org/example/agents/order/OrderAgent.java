@@ -12,17 +12,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class OrderAgent extends Agent {
-    private final Map<String, AID> processes = new HashMap<>();
+    private final String pathToCookers = "src/main/java/org/example/resources/cookers.txt";
+    private final Map<String, String> processes = new HashMap<>();
     private final String name = "order";
     public static AID aid;
 
     @Override
     public void setup() {
         aid = getAID();
+<<<<<<< HEAD
         AController.log.info("Order " + getAID().getName() + " created");
+=======
+        System.out.println("Order agent for user" + getArguments()[1].toString() + "'s order created");
+>>>>>>> master
         AController.addNewAgent(this, name);
 
         createDishes();
+
+        addBehaviour(new ProductsChecker(getArguments()[0].toString()));
     }
 
     private void createDishes() {
@@ -32,9 +39,13 @@ public class OrderAgent extends Agent {
             String dishId = dish.getAsJsonObject().get("ord_dish_id").getAsString();
             String menuId = dish.getAsJsonObject().get("menu_dish").getAsString();
 
+<<<<<<< HEAD
             AController.log.info("Dish " + menuId + " was added with id " + dishId);
+=======
+            System.out.println("Dish " + menuId + " with id " + dishId + " started processing");
+>>>>>>> master
 
-            processes.put(dishId, new AID(AController.addAgent(OperationAgent.class, dishId, new Object[]{dish})));
+            processes.put(dishId, AController.addAgent(OperationAgent.class, dishId, new Object[]{dish, dishId}));
         }
     }
 }

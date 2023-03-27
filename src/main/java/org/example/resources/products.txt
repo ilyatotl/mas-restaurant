@@ -54,7 +54,7 @@
                                     "prod_item_delivered": "2023-01-11T09:19:31",
                                     "prod_item_valid_until": "2025-12-31T23:59:59"
                         },
-  {
+                        {
                                     "prod_item_id": 133,
                                     "prod_item_type": 12,
                                     "prod_item_name": "Paper cup 0.2",
@@ -66,7 +66,7 @@
                                     "prod_item_valid_until": "2026-12-31T23:59:59"
                         },
                         {
-                                    "prod_item _id": 139,
+                                    "prod_item_id": 139,
                                     "prod_item_type": 19,
                                     "prod_item_name": "Plastic stirrer",
                                     "prod_item_company": "Monplast EOOD",

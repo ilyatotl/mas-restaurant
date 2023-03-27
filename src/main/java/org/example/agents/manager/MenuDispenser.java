@@ -18,7 +18,11 @@ public class MenuDispenser extends CyclicBehaviour {
             ACLMessage response = request.createReply();
             response.setPerformative(ACLMessage.PROPOSE);
             response.setContent(TJSONSerializer.getString(pathToMenu));
+<<<<<<< HEAD
             AController.log.info("Menu was send to visitor");
+=======
+            System.out.println("Menu was send to visitor " + request.getContent());
+>>>>>>> master
             myAgent.send(response);
         } else {
             block();

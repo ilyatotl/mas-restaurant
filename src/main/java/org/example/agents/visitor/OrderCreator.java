@@ -13,11 +13,13 @@ import org.example.agents.manager.ManagerAgent;
 public class OrderCreator extends Behaviour {
     private Object order;
     private static final String topic = "order";
+    private final String visitorName;
     int stage = 0;
     private MessageTemplate messageTemplate;
 
-    OrderCreator(Object order) {
+    OrderCreator(Object order, String visitorName) {
         this.order = order;
+        this.visitorName = visitorName;
     }
 
     @Override
@@ -25,6 +27,7 @@ public class OrderCreator extends Behaviour {
         if (stage == 0) {
             ACLMessage message = new ACLMessage(ACLMessage.CFP);
             message.addReceiver(ManagerAgent.aid);
+            message.setContent(visitorName);
             message.setConversationId(topic);
             message.setReplyWith("" + System.currentTimeMillis());
 
@@ -32,7 +35,11 @@ public class OrderCreator extends Behaviour {
             messageTemplate = MessageTemplate.and(MessageTemplate.MatchConversationId(topic),
                     MessageTemplate.MatchInReplyTo(message.getReplyWith()));
 
+<<<<<<< HEAD
             AController.log.info("Visitor asked for menu");
+=======
+            System.out.println("Visitor " + visitorName + " asked for menu");
+>>>>>>> master
             ++stage;
         } else if (stage == 1) {
             ACLMessage response = myAgent.receive(messageTemplate);
@@ -41,22 +48,28 @@ public class OrderCreator extends Behaviour {
                 JsonArray dishes = menu.get("menu_dishes").getAsJsonArray();
 
                 String dishes_id = getDishesIdes(dishes);
+<<<<<<< HEAD
                 AController.log.info("Menu with dishes: " + dishes_id + " was received");
+=======
+                System.out.println("Menu with dishes: " + dishes_id + " was received by visitor " + visitorName);
+>>>>>>> master
 
                 ACLMessage orderMessage = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
                 orderMessage.addReceiver(ManagerAgent.aid);
                 orderMessage.setContent(order.toString());
                 orderMessage.setConversationId(topic);
 
+<<<<<<< HEAD
                 AController.log.info("Dishes ordered - " + order.toString());
+=======
+                System.out.println("Dishes ordered - " + order + " by visitor " + visitorName);
+>>>>>>> master
                 myAgent.send(orderMessage);
 
                 ++stage;
             } else {
                 block();
             }
-        } else {
-            // TO DO
         }
     }
 
@@ -71,6 +84,6 @@ public class OrderCreator extends Behaviour {
 
     @Override
     public boolean done() {
-        return stage == 3;
+        return stage == 2;
     }
 }
