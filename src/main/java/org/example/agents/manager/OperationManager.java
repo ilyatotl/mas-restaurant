@@ -11,10 +11,12 @@ public class OperationManager extends CyclicBehaviour {
     private int cookerNumber = 0;
     private final int cookerCount;
     List<AID> cookers;
+    List<String> cookersNames;
 
-    public OperationManager(List<AID> cookers) {
+    public OperationManager(List<AID> cookers, List<String> cookersNames) {
         cookerCount = cookers.size();
         this.cookers = cookers;
+        this.cookersNames = cookersNames;
     }
 
 
@@ -25,6 +27,9 @@ public class OperationManager extends CyclicBehaviour {
 
         if (message != null) {
             String ord_id = message.getContent();
+
+            System.out.println("Dish " + ord_id + " was given to cooker " + cookersNames.get(cookerNumber));
+
             ACLMessage messageToCooker = new ACLMessage(ACLMessage.CFP);
             messageToCooker.addReceiver(cookers.get(cookerNumber));
             messageToCooker.setContent(ord_id);

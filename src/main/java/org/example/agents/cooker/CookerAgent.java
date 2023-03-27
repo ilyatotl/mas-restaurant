@@ -12,7 +12,7 @@ public class CookerAgent extends Agent {
     protected void setup() {
         aid = getAID();
         AController.addNewAgent(this, name);
-        System.out.println("Cooker agent " + getAID().getName() + " created");
+        System.out.println("Cooker agent " + getArguments()[0].toString() + " with id " + getArguments()[1].toString() + " created");
 
         addBehaviour(new CookProducer(getArguments()));
     }
