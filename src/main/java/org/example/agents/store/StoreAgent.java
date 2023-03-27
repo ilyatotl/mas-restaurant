@@ -12,6 +12,6 @@ public class StoreAgent extends Agent {
     protected void setup() {
         aid = getAID();
         AController.addNewAgent(this, name);
-        System.out.println("Store agent " + getAID().getName() + " created");
+        AController.log.info("Store agent " + getAID().getName() + " created");
     }
 }

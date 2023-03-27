@@ -19,7 +19,7 @@ public class ProductAgent extends Agent {
     @Override
     protected void setup() {
         aid = getAID();
-        System.out.println("Product agent " + getAID().getName() + " created");
+        AController.log.info("Product agent " + getAID().getName() + " created");
         AController.addNewAgent(this, name);
 
         getProducts();
@@ -32,7 +32,7 @@ public class ProductAgent extends Agent {
             products.put(product.getAsJsonObject().get("prod_item_id").getAsString(), product.getAsJsonObject());
             productIdes += product.getAsJsonObject().get("prod_item_id").getAsString() + " ";
         }
-        System.out.println("Products: " + productIdes + " added to the store");
+        AController.log.info("Products: " + productIdes + " added to the store");
     }
 
 

@@ -11,6 +11,6 @@ public class CookerAgent extends Agent {
     protected void setup() {
         aid = getAID();
         AController.addNewAgent(this, name);
-        System.out.println("Cooker agent " + getAID().getName() + " created");
+        AController.log.info("Cooker agent " + getAID().getName() + " created");
     }
 }

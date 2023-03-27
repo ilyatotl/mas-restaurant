@@ -13,10 +13,28 @@ import jade.wrapper.StaleProxyException;
 import org.example.agents.manager.ManagerAgent;
 import org.example.agents.store.StoreAgent;
 
+import java.io.IOException;
 import java.text.MessageFormat;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class AController {
     private static ContainerController containerController;
+    public static Logger log = Logger.getLogger("Log");
+
+    static {
+        FileHandler fh;
+        try {
+            fh = new FileHandler("logs.txt");
+            log.addHandler(fh);
+            SimpleFormatter formatter = new SimpleFormatter();
+            fh.setFormatter(formatter);
+            log.info("My first log");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public AController() {
         final Runtime rt = Runtime.instance();
@@ -57,7 +75,7 @@ public class AController {
         try {
             DFService.register(agent, dfAgentDescription);
         } catch (FIPAException ex) {
-            System.out.println(ex.getMessage());
+            AController.log.info(ex.getMessage());
         }
     }
 }

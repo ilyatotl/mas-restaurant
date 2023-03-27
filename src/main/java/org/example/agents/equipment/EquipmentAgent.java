@@ -11,6 +11,6 @@ public class EquipmentAgent extends Agent {
     protected void setup() {
         aid = getAID();
         AController.addNewAgent(this, name);
-        System.out.println("Equipment agent " + getAID().getName() + " created");
+        AController.log.info("Equipment agent " + getAID().getName() + " created");
     }
 }

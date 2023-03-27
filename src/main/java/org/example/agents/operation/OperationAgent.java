@@ -11,7 +11,7 @@ public class OperationAgent extends Agent {
     @Override
     protected void setup() {
         aid = getAID();
-        System.out.println("Operation " + getAID().getName() + " created");
+        AController.log.info("Operation " + getAID().getName() + " created");
         AController.addNewAgent(this, name);
     }
 }

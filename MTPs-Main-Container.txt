@@ -1,1 +1,1 @@
-http://ilya-VivoBook-ASUSLaptop-X512JF-A512JF:7778/acc
+http://10.192.244.213:7778/acc

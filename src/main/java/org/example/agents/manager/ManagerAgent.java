@@ -33,7 +33,7 @@ public class ManagerAgent extends jade.core.Agent {
     @Override
     public void setup() {
         aid = getAID();
-        System.out.println("Manager agent " + getAID().getName() + " created");
+        AController.log.info("Manager agent " + getAID().getName() + " created");
         AController.addNewAgent(this, name);
 
         createStore();

@@ -10,7 +10,7 @@ public class VisitorAgent extends Agent {
     @Override
     protected void setup() {
         AController.addNewAgent(this, name);
-        System.out.println("Visitor agent " + getAID().getName() + " created");
+        AController.log.info("Visitor agent " + getAID().getName() + " created");
 
         addBehaviour(new OrderCreator(getArguments()[0]));
     }

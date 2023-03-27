@@ -19,7 +19,7 @@ public class OrderAgent extends Agent {
     @Override
     public void setup() {
         aid = getAID();
-        System.out.println("Order " + getAID().getName() + " created");
+        AController.log.info("Order " + getAID().getName() + " created");
         AController.addNewAgent(this, name);
 
         createDishes();
@@ -32,7 +32,7 @@ public class OrderAgent extends Agent {
             String dishId = dish.getAsJsonObject().get("ord_dish_id").getAsString();
             String menuId = dish.getAsJsonObject().get("menu_dish").getAsString();
 
-            System.out.println("Dish " + menuId + " was added with id " + dishId);
+            AController.log.info("Dish " + menuId + " was added with id " + dishId);
 
             processes.put(dishId, new AID(AController.addAgent(OperationAgent.class, dishId, new Object[]{dish})));
         }

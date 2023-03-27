@@ -14,7 +14,7 @@ public class ManagerOrderCreator extends CyclicBehaviour {
 
         if (message != null) {
             String order = message.getContent();
-            System.out.println("Manager receive from " + message.getSender().getName() + " order: " + order);
+            AController.log.info("Manager receive from " + message.getSender().getName() + " order: " + order);
 
             AController.addAgent(OrderAgent.class,
                     message.getSender().getName(),

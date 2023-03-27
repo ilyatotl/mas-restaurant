@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
+import org.example.AController;
 import org.example.JSONSerializer.TJSONSerializer;
 import org.example.agents.manager.ManagerAgent;
 
@@ -31,7 +32,7 @@ public class OrderCreator extends Behaviour {
             messageTemplate = MessageTemplate.and(MessageTemplate.MatchConversationId(topic),
                     MessageTemplate.MatchInReplyTo(message.getReplyWith()));
 
-            System.out.println("Visitor asked for menu");
+            AController.log.info("Visitor asked for menu");
             ++stage;
         } else if (stage == 1) {
             ACLMessage response = myAgent.receive(messageTemplate);
@@ -40,14 +41,14 @@ public class OrderCreator extends Behaviour {
                 JsonArray dishes = menu.get("menu_dishes").getAsJsonArray();
 
                 String dishes_id = getDishesIdes(dishes);
-                System.out.println("Menu with dishes: " + dishes_id + " was received");
+                AController.log.info("Menu with dishes: " + dishes_id + " was received");
 
                 ACLMessage orderMessage = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
                 orderMessage.addReceiver(ManagerAgent.aid);
                 orderMessage.setContent(order.toString());
                 orderMessage.setConversationId(topic);
 
-                System.out.println("Dishes ordered - " + order.toString());
+                AController.log.info("Dishes ordered - " + order.toString());
                 myAgent.send(orderMessage);
 
                 ++stage;
