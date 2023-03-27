@@ -21,6 +21,9 @@ public class StoreAgent extends Agent {
         aid = getAID();
         System.out.println("Store agent created");
         AController.addNewAgent(this, name);
+<<<<<<< HEAD
+        AController.log.info("Store agent " + getAID().getName() + " created");
+=======
 
         getProducts();
 
@@ -35,5 +38,6 @@ public class StoreAgent extends Agent {
             productIdes += product.getAsJsonObject().get("prod_item_id").getAsString() + " ";
         }
         System.out.println("Products: " + productIdes + " added to the store");
+>>>>>>> master
     }
 }

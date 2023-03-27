@@ -1,0 +1,58 @@
+Mar 27, 2023 5:47:40 AM org.example.AController <clinit>
+INFO: My first log
+Mar 27, 2023 5:47:41 AM org.example.agents.manager.ManagerAgent setup
+INFO: Manager agent ManagerAgent@10.192.244.213:8081/JADE created
+Mar 27, 2023 5:47:41 AM org.example.agents.store.StoreAgent setup
+INFO: Store agent StoreAgent@10.192.244.213:8081/JADE created
+Mar 27, 2023 5:47:41 AM org.example.agents.visitor.VisitorAgent setup
+INFO: Visitor agent VisitorAgent Visitor123@10.192.244.213:8081/JADE created
+Mar 27, 2023 5:47:41 AM org.example.agents.visitor.OrderCreator action
+INFO: Visitor asked for menu
+Mar 27, 2023 5:47:41 AM org.example.agents.visitor.VisitorAgent setup
+INFO: Visitor agent VisitorAgent Visitor124@10.192.244.213:8081/JADE created
+Mar 27, 2023 5:47:41 AM org.example.agents.visitor.OrderCreator action
+INFO: Visitor asked for menu
+Mar 27, 2023 5:47:41 AM org.example.agents.manager.MenuDispenser action
+INFO: Menu was send to visitor
+Mar 27, 2023 5:47:41 AM org.example.agents.cooker.CookerAgent setup
+INFO: Cooker agent CookerAgentIvanov A. S.@10.192.244.213:8081/JADE created
+Mar 27, 2023 5:47:41 AM org.example.agents.visitor.OrderCreator action
+INFO: Menu with dishes: 28 was received
+Mar 27, 2023 5:47:41 AM org.example.agents.manager.MenuDispenser action
+INFO: Menu was send to visitor
+Mar 27, 2023 5:47:41 AM org.example.agents.cooker.CookerAgent setup
+INFO: Cooker agent CookerAgentPetrov I. V.@10.192.244.213:8081/JADE created
+Mar 27, 2023 5:47:41 AM org.example.agents.visitor.OrderCreator action
+INFO: Menu with dishes: 28 was received
+Mar 27, 2023 5:47:41 AM org.example.agents.cooker.CookerAgent setup
+INFO: Cooker agent CookerAgentSidorov G. S.@10.192.244.213:8081/JADE created
+Mar 27, 2023 5:47:41 AM org.example.agents.visitor.OrderCreator action
+INFO: Dishes ordered - {"vis_name":" Visitor123","vis_ord_started":"2023-02-28T10:12:37","vis_ord_ended":"2023-02-28T10:13:05","vis_ord_total":118,"vis_ord_dishes":[{"ord_dish_id":625,"menu_dish":28},{"ord_dish_id":626,"menu_dish":28}]}
+Mar 27, 2023 5:47:41 AM org.example.agents.equipment.EquipmentAgent setup
+INFO: Equipment agent EquipmentAgentLIDER 250@10.192.244.213:8081/JADE created
+Mar 27, 2023 5:47:41 AM org.example.agents.equipment.EquipmentAgent setup
+INFO: Equipment agent EquipmentAgentLIDER 150@10.192.244.213:8081/JADE created
+Mar 27, 2023 5:47:41 AM org.example.agents.equipment.EquipmentAgent setup
+INFO: Equipment agent EquipmentAgentDAZHENG LOOKYAMI@10.192.244.213:8081/JADE created
+Mar 27, 2023 5:47:41 AM org.example.agents.visitor.OrderCreator action
+INFO: Dishes ordered - {"vis_name":" Visitor124","vis_ord_started":"2023-02-28T11:09:07","vis_ord_ended":"2023-02-28T11:12:51","vis_ord_total":59,"vis_ord_dishes":[{"ord_dish_id":627,"menu_dish":28}]}
+Mar 27, 2023 5:47:41 AM org.example.agents.manager.ManagerOrderCreator action
+INFO: Manager receive from VisitorAgent Visitor123@10.192.244.213:8081/JADE order: {"vis_name":" Visitor123","vis_ord_started":"2023-02-28T10:12:37","vis_ord_ended":"2023-02-28T10:13:05","vis_ord_total":118,"vis_ord_dishes":[{"ord_dish_id":625,"menu_dish":28},{"ord_dish_id":626,"menu_dish":28}]}
+Mar 27, 2023 5:47:41 AM org.example.agents.manager.ManagerOrderCreator action
+INFO: Manager receive from VisitorAgent Visitor124@10.192.244.213:8081/JADE order: {"vis_name":" Visitor124","vis_ord_started":"2023-02-28T11:09:07","vis_ord_ended":"2023-02-28T11:12:51","vis_ord_total":59,"vis_ord_dishes":[{"ord_dish_id":627,"menu_dish":28}]}
+Mar 27, 2023 5:47:41 AM org.example.agents.order.OrderAgent setup
+INFO: Order OrderAgentVisitorAgent Visitor123@10.192.244.213:8081/JADE@10.192.244.213:8081/JADE created
+Mar 27, 2023 5:47:41 AM org.example.agents.order.OrderAgent setup
+INFO: Order OrderAgentVisitorAgent Visitor124@10.192.244.213:8081/JADE@10.192.244.213:8081/JADE created
+Mar 27, 2023 5:47:41 AM org.example.agents.order.OrderAgent createDishes
+INFO: Dish 28 was added with id 625
+Mar 27, 2023 5:47:41 AM org.example.agents.order.OrderAgent createDishes
+INFO: Dish 28 was added with id 627
+Mar 27, 2023 5:47:41 AM org.example.agents.operation.OperationAgent setup
+INFO: Operation OperationAgent625@10.192.244.213:8081/JADE created
+Mar 27, 2023 5:47:41 AM org.example.agents.order.OrderAgent createDishes
+INFO: Dish 28 was added with id 626
+Mar 27, 2023 5:47:41 AM org.example.agents.operation.OperationAgent setup
+INFO: Operation OperationAgent627@10.192.244.213:8081/JADE created
+Mar 27, 2023 5:47:41 AM org.example.agents.operation.OperationAgent setup
+INFO: Operation OperationAgent626@10.192.244.213:8081/JADE created

@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
+import org.example.AController;
 import org.example.JSONSerializer.TJSONSerializer;
 import org.example.agents.manager.ManagerAgent;
 
@@ -34,7 +35,11 @@ public class OrderCreator extends Behaviour {
             messageTemplate = MessageTemplate.and(MessageTemplate.MatchConversationId(topic),
                     MessageTemplate.MatchInReplyTo(message.getReplyWith()));
 
+<<<<<<< HEAD
+            AController.log.info("Visitor asked for menu");
+=======
             System.out.println("Visitor " + visitorName + " asked for menu");
+>>>>>>> master
             ++stage;
         } else if (stage == 1) {
             ACLMessage response = myAgent.receive(messageTemplate);
@@ -43,14 +48,22 @@ public class OrderCreator extends Behaviour {
                 JsonArray dishes = menu.get("menu_dishes").getAsJsonArray();
 
                 String dishes_id = getDishesIdes(dishes);
+<<<<<<< HEAD
+                AController.log.info("Menu with dishes: " + dishes_id + " was received");
+=======
                 System.out.println("Menu with dishes: " + dishes_id + " was received by visitor " + visitorName);
+>>>>>>> master
 
                 ACLMessage orderMessage = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
                 orderMessage.addReceiver(ManagerAgent.aid);
                 orderMessage.setContent(order.toString());
                 orderMessage.setConversationId(topic);
 
+<<<<<<< HEAD
+                AController.log.info("Dishes ordered - " + order.toString());
+=======
                 System.out.println("Dishes ordered - " + order + " by visitor " + visitorName);
+>>>>>>> master
                 myAgent.send(orderMessage);
 
                 ++stage;

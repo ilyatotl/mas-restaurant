@@ -16,8 +16,12 @@ public class ManagerOrderCreator extends CyclicBehaviour {
 
         if (message != null) {
             String order = message.getContent();
+<<<<<<< HEAD
+            AController.log.info("Manager receive from " + message.getSender().getName() + " order: " + order);
+=======
             JsonObject jsonOrder = TJSONSerializer.getJsonFromString(order);
             System.out.println("Manager receive from " + jsonOrder.get("vis_name").getAsString() + " order: " + order);
+>>>>>>> master
 
             AController.addAgent(OrderAgent.class,
                     message.getSender().getName(),

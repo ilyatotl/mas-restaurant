@@ -16,11 +16,15 @@ public class EquipmentAgent extends Agent {
     protected void setup() {
         aid = getAID();
         AController.addNewAgent(this, name);
+<<<<<<< HEAD
+        AController.log.info("Equipment agent " + getAID().getName() + " created");
+=======
 
         JsonObject jsonEquipment = TJSONSerializer.getJsonFromString(getArguments()[0].toString());
         equipmentName = jsonEquipment.get("equip_name").getAsString();
         equipmentId = jsonEquipment.get("equip_id").getAsString();
 
         System.out.println("Equipment agent " + equipmentName + " with id " + equipmentId + " created");
+>>>>>>> master
     }
 }
